@@ -16,7 +16,7 @@ ASCII Art
 \\---/
 */
 
-//Player 1 and Player 2
+bool gridPos[9];
 
 struct Player
 {
@@ -84,14 +84,14 @@ int main()
         {
             player1.isX = true;
             player2.isO = true;
-            cout << player1.name << " is X\n" << player2.name << "is O\n";
+            cout << player1.name << " is X\n" << player2.name << " is O\n";
             break;
         }
         else if (input == "O" || "o")
         {
             player1.isO = true;
             player2.isX = true;
-            cout << player1.name << " is O\n" << player2.name << "is X\n";
+            cout << player1.name << " is O\n" << player2.name << " is X\n";
             break;
         }
         else
@@ -120,7 +120,6 @@ int main()
         << "             |         |         \n\n";
     cout << player1.name << "'s turn!\n" << "Please select a grid position to start\n" << "> ";
     cin >> input;
-    
 
 }
 
