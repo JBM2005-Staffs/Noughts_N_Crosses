@@ -102,7 +102,7 @@ int main()
         }
     }
 
-    cout << "         1        2        3     \n"
+    cout << "        1        2         3    \n"
         << "             |         |         \n"
         << "             |         |         \n"
         << " A           |         |         \n"
@@ -120,6 +120,19 @@ int main()
         << "             |         |         \n\n";
     cout << player1.name << "'s turn!\n" << "Please select a grid position to start\n" << "> ";
     cin >> input;
+    
+    
+    /*
+      | |
+    --+-+--
+      | |
+    --+-+--
+      | |
+      */
 
+
+
+    //Storing the data in the grid pos is easy because we can just put a boolean on if somethings in there, then we can assign that another bool of X or O depending whose turn it is
+    //The difficult part is making a dynamic grid, we'd possibly need 2 grids, one saved in memory and another blank one to overlay on top
 }
 
