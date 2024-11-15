@@ -16,6 +16,17 @@ ASCII Art
 
 */
 
+//Player 1 and Player 2
+
+struct Player
+{
+    string name;
+    bool isX;
+    bool isO;
+};
+
+
+
 int main()
 {
     cout << "          1       2       3   " << endl;
@@ -42,5 +53,8 @@ int main()
         << "| |   | '__/ _ \\/ __/ __|/ _ \\/ __|             \n"
         << "| |___| | | (_) \\__ \\__ \\  __/\\__ \\             \n"
         << " \\____|_|  \\___/|___/___/\\___||___/             \n";
+
+    cout << " "
+
 }
 
