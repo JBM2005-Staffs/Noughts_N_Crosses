@@ -19,15 +19,17 @@ ASCII Art
 
 struct Player
 {
+public:
     string name;
-    
+
 };
-Player player1;
-Player player2;
 
 
 int main()
 {
+    Player player1;
+    Player player2;
+
     cout << "          1       2       3   " << endl;
     cout << "             |  /---\\  |       " << endl;
     cout << "             |  |   |  |       " << endl;
