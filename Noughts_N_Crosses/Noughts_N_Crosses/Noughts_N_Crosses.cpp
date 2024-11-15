@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 using namespace std;
+
 /*
 ASCII Art
 \\  /
@@ -12,8 +13,6 @@ ASCII Art
 |    |
 |    |
 \\---/
-
-
 */
 
 //Player 1 and Player 2
@@ -21,10 +20,10 @@ ASCII Art
 struct Player
 {
     string name;
-    bool isX;
-    bool isO;
+    
 };
-
+Player player1;
+Player player2;
 
 
 int main()
@@ -52,9 +51,13 @@ int main()
         << " / ___|_ __ ___  __|___/  ___  ___              \n"
         << "| |   | '__/ _ \\/ __/ __|/ _ \\/ __|             \n"
         << "| |___| | | (_) \\__ \\__ \\  __/\\__ \\             \n"
-        << " \\____|_|  \\___/|___/___/\\___||___/             \n";
+        << " \\____|_|  \\___/|___/___/\\___||___/             \n\n"
+        << "           Jacob McGrath 2024 \n\n\n";
 
-    cout << " "
+    cout << "Hello Players, what would you like to be called?\n";
+    cout << "Player 1, enter your name\n";
+    cout << "> ";
+    getline(cin, player1.name);
 
 }
 
