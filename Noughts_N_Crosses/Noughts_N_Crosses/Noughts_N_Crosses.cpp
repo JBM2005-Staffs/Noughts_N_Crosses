@@ -32,7 +32,7 @@ int main()
 {
     Player player1;
     Player player2;
- 
+
 
     cout << "          1       2       3   " << endl;
     cout << "             |  /---\\  |       " << endl;
@@ -49,7 +49,7 @@ int main()
     cout << " C     \\/    |         |       " << endl;
     cout << "       /\\    |         |       " << endl;
     cout << "      /  \\   |         |       " << endl;
-    cout <<"  _   _                   _     _          ___          \n"
+    cout << "  _   _                   _     _          ___          \n"
         << "| \\ | | ___  _   _  __ _| |__ | |_ ___   ( _ )         \n"
         << "|  \\| |/ _ \\| | | |/ _` | '_ \\| __/ __|  / _ \\/     \n"
         << "| |\\  | (_) | |_| | (_| | | | | |_\\__ \\ | (_>  <     \n"
@@ -70,7 +70,7 @@ int main()
     cout << "Player 2, enter your name\n";
     cout << "> ";
     getline(cin, player2.name);
-    
+
     cout << player2.name << "\n\n";
 
     cout << player1.name << " would you like to be Xs or Os? (Type X or O)\n";
@@ -120,8 +120,8 @@ int main()
         << "             |         |         \n\n";
     cout << player1.name << "'s turn!\n" << "Please select a grid position to start\n" << "> ";
     cin >> input;
-    
-    
+
+
     /*
       | |
     --+-+--
@@ -132,7 +132,6 @@ int main()
 
 
 
-    //Storing the data in the grid pos is easy because we can just put a boolean on if somethings in there, then we can assign that another bool of X or O depending whose turn it is
-    //The difficult part is making a dynamic grid, we'd possibly need 2 grids, one saved in memory and another blank one to overlay on top
+      //Storing the data in the grid pos is easy because we can just put a boolean on if somethings in there, then we can assign that another bool of X or O depending whose turn it is
+      //The difficult part is making a dynamic grid, we'd possibly need 2 grids, one saved in memory and another blank one to overlay on top
 }
-
