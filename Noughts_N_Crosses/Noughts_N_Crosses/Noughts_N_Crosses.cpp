@@ -16,7 +16,7 @@ ASCII Art
 \\---/
 */
 
-bool gridPos[18];
+//Thanks GeeksForGeeks!
 
 struct Player
 {
@@ -30,26 +30,30 @@ string input;
 
 int main()
 {
+    char board[3][3] = { { ' ', ' ', ' ' },
+                         { ' ', ' ', ' ' },
+                         { ' ', ' ', ' ' } };    //Thanks GeeksForGeeks!
+
     Player player1;
     Player player2;
 
 
-    cout << "          1       2       3   " << endl;
-    cout << "             |  /---\\  |       " << endl;
-    cout << "             |  |   |  |       " << endl;
-    cout << " A           |  |   |  |       " << endl;
-    cout << "             |  \\---/  |       " << endl;
-    cout << "    ---------+---------+---------" << endl;
-    cout << "             |         |       " << endl;
-    cout << "             |         |       " << endl;
-    cout << " B           |         |       " << endl;
-    cout << "             |         |       " << endl;
-    cout << "    ---------+---------+---------" << endl;
-    cout << "      \\  /   |         |       " << endl;
-    cout << " C     \\/    |         |       " << endl;
-    cout << "       /\\    |         |       " << endl;
-    cout << "      /  \\   |         |       " << endl;
-    cout << "  _   _                   _     _          ___          \n"
+    cout << "          1       2       3       " << endl
+        << "             |  /---\\  |         " << endl
+        << "             |  |   |  |          " << endl
+        << " A           |  |   |  |          " << endl
+        << "             |  \\---/  |         " << endl
+        << "    ---------+---------+--------- " << endl
+        << "             |         |          " << endl
+        << "             |         |          " << endl
+        << " B           |         |          " << endl
+        << "             |         |          " << endl
+        << "    ---------+---------+--------- " << endl
+        << "      \\  /   |         |         " << endl
+        << " C     \\/    |         |         " << endl
+        << "       /\\    |         |         " << endl
+        << "      /  \\   |         |         " << endl;
+  cout  << " _   _                   _     _          ___     \n"
         << "| \\ | | ___  _   _  __ _| |__ | |_ ___   ( _ )         \n"
         << "|  \\| |/ _ \\| | | |/ _` | '_ \\| __/ __|  / _ \\/     \n"
         << "| |\\  | (_) | |_| | (_| | | | | |_\\__ \\ | (_>  <     \n"
@@ -79,7 +83,9 @@ int main()
 
     while (input != "X" || "x" || "O" || "o")
     {
+        
         //on while Exit run this code
+            
         if (input == "X" || "x")
         {
             player1.isX = true;
@@ -94,43 +100,39 @@ int main()
             cout << player1.name << " is O\n" << player2.name << " is X\n";
             break;
         }
-        else
-        {
-            cin.clear();
-            cout << "\n\nSorry I don't know what that is!\n" << "Please enter your prefered symbol\n" << "> ";
-            cin >> input;
-        }
+        cin.clear();
+        cout << "\n\nSorry I don't know what that is!\n" << "Please enter your prefered symbol\n" << "> ";
+        cin >> input;
+
     }
 
-    cout << "        1        2         3    \n"
-        << "             |         |         \n"
-        << "             |         |         \n"
-        << " A           |         |         \n"
-        << "             |         |         \n"
-        << "    ---------+---------+---------\n"
-        << "             |         |         \n"
-        << "             |         |         \n"
-        << " B           |         |         \n"
-        << "             |         |         \n"
-        << "    ---------+---------+---------\n"
-        << "             |         |         \n"
-        << "             |         |         \n"
-        << " C           |         |         \n"
-        << "             |         |         \n"
-        << "             |         |         \n\n";
-    cout << player1.name << "'s turn!\n" << "Please select a grid position to start\n" << "> ";
+   // cout << "        1        2         3    \n"
+   //     << "             |         |         \n"
+   //     << "             |         |         \n"
+   //     << " A           |         |         \n"
+   //     << "             |         |         \n"
+   //     << "    ---------+---------+---------\n"
+   //     << "             |         |         \n"
+   //     << "             |         |         \n"
+   //     << " B           |         |         \n"
+   //     << "             |         |         \n"
+   //     << "    ---------+---------+---------\n"
+   //     << "             |         |         \n"
+   //     << "             |         |         \n"
+   //     << " C           |         |         \n"
+   //     << "             |         |         \n"
+   //     << "             |         |         \n\n";
+    cout << "    1  2  3 \n"
+        << "A     |  |   \n"
+        << "    --+--+-- \n"
+        << "B     |  |   \n"
+        << "    --+--+-- \n"
+        << "C     |  |   \n";
+
+
+    cout << player1.name << "'s turn!\n" << "Please select a grid position (A1-C3) to start\n" << "> ";
     cin >> input;
-
-
-    /*
-      | |
-    --+-+--
-      | |
-    --+-+--
-      | |
-      */
-
-
+    
 
       //Storing the data in the grid pos is easy because we can just put a boolean on if somethings in there, then we can assign that another bool of X or O depending whose turn it is
       //The difficult part is making a dynamic grid, we'd possibly need 2 grids, one saved in memory and another blank one to overlay on top
