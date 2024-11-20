@@ -3,21 +3,6 @@
 #include <string>
 using namespace std;
 
-/*
-ASCII Art
-\\  /
- \\/
- /\\
-/  \\
-
-/---\\
-|    |
-|    |
-\\---/
-*/
-
-//Thanks GeeksForGeeks!
-
 struct Player
 {
 public:
@@ -37,7 +22,6 @@ int main()
     Player player1;
     Player player2;
 
-
     cout << "          1       2       3       " << endl
         << "             |  /---\\  |         " << endl
         << "             |  |   |  |          " << endl
@@ -52,7 +36,7 @@ int main()
         << "      \\  /   |         |         " << endl
         << " C     \\/    |         |         " << endl
         << "       /\\    |         |         " << endl
-        << "      /  \\   |         |         " << endl;
+        << "      /  \\   |         |         \n\n" << endl;
   cout  << " _   _                   _     _          ___     \n"
         << "| \\ | | ___  _   _  __ _| |__ | |_ ___   ( _ )         \n"
         << "|  \\| |/ _ \\| | | |/ _` | '_ \\| __/ __|  / _ \\/     \n"
@@ -77,51 +61,9 @@ int main()
 
     cout << player2.name << "\n\n";
 
-    cout << player1.name << " would you like to be Xs or Os? (Type X or O)\n";
-    cout << "> ";
-    cin >> input;
-
-    while (input != "X" || "x" || "O" || "o")
-    {
-        
-        //on while Exit run this code
-            
-        if (input == "X" || "x")
-        {
-            player1.isX = true;
-            player2.isO = true;
-            cout << player1.name << " is X\n" << player2.name << " is O\n";
-            break;
-        }
-        else if (input == "O" || "o")
-        {
-            player1.isO = true;
-            player2.isX = true;
-            cout << player1.name << " is O\n" << player2.name << " is X\n";
-            break;
-        }
-        cin.clear();
-        cout << "\n\nSorry I don't know what that is!\n" << "Please enter your prefered symbol\n" << "> ";
-        cin >> input;
-
-    }
-
-   // cout << "        1        2         3    \n"
-   //     << "             |         |         \n"
-   //     << "             |         |         \n"
-   //     << " A           |         |         \n"
-   //     << "             |         |         \n"
-   //     << "    ---------+---------+---------\n"
-   //     << "             |         |         \n"
-   //     << "             |         |         \n"
-   //     << " B           |         |         \n"
-   //     << "             |         |         \n"
-   //     << "    ---------+---------+---------\n"
-   //     << "             |         |         \n"
-   //     << "             |         |         \n"
-   //     << " C           |         |         \n"
-   //     << "             |         |         \n"
-   //     << "             |         |         \n\n";
+    cout << player1.name << " Is X\n";
+    cout << player2.name << " is O\n\n ";
+    
     cout << "    1  2  3 \n"
         << "A     |  |   \n"
         << "    --+--+-- \n"
