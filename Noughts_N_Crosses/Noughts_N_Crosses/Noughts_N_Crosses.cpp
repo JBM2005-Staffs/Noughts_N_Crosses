@@ -1,6 +1,7 @@
 #include <iostream>
-#include <vector>
 #include <string>
+#include <vector>
+#include <algorithm>
 using namespace std;
 
 struct Player
@@ -12,13 +13,24 @@ public:
 };
 
 string input;
+char board[3][3] =  { {'_', '_', '_'}, { '_', '_', '_' }, { '_', '_', '_' } };    //Credit to GeeksForGeeks for this inital part
 
+
+void printBoard() {
+    cout << "    1   2   3\n";
+    for (int i = 0; i < 3; i++) {
+        char rowLabel = 'A' + i; // Convert row index to letter (A, B, C)
+        cout << rowLabel << "   ";
+        for (int j = 0; j < 3; j++) {
+            cout << board[i][j];
+            if (j < 2) cout << " | "; 
+        }
+        cout << endl;
+        if (i < 2) cout << "   ---+---+---\n"; 
+    }
+}
 int main()
 {
-    char board[3][3] = { { ' ', ' ', ' ' },
-                         { ' ', ' ', ' ' },
-                         { ' ', ' ', ' ' } };    //Thanks GeeksForGeeks!
-
     Player player1;
     Player player2;
 
@@ -64,13 +76,7 @@ int main()
     cout << player1.name << " Is X\n";
     cout << player2.name << " is O\n\n ";
     
-    cout << "    1  2  3 \n"
-        << "A     |  |   \n"
-        << "    --+--+-- \n"
-        << "B     |  |   \n"
-        << "    --+--+-- \n"
-        << "C     |  |   \n";
-
+    printBoard();
 
     cout << player1.name << "'s turn!\n" << "Please select a grid position (A1-C3) to start\n" << "> ";
     cin >> input;
