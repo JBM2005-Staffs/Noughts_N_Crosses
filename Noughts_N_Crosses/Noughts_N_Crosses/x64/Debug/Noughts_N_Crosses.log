@@ -1,2 +1,5 @@
 ﻿  Noughts_N_Crosses.cpp
+C:\Users\jacob\Documents\GitHub\Noughts_N_Crosses\Noughts_N_Crosses\Noughts_N_Crosses\Noughts_N_Crosses.cpp(113,12): warning C4129: '_': unrecognized character escape sequence
+C:\Users\jacob\Documents\GitHub\Noughts_N_Crosses\Noughts_N_Crosses\Noughts_N_Crosses\Noughts_N_Crosses.cpp(175,20): warning C4129: '_': unrecognized character escape sequence
+C:\Users\jacob\Documents\GitHub\Noughts_N_Crosses\Noughts_N_Crosses\Noughts_N_Crosses\Noughts_N_Crosses.cpp(195,12): warning C4129: '_': unrecognized character escape sequence
   Noughts_N_Crosses.vcxproj -> C:\Users\jacob\Documents\GitHub\Noughts_N_Crosses\Noughts_N_Crosses\x64\Debug\Noughts_N_Crosses.exe
