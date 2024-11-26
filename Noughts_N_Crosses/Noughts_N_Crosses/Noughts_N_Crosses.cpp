@@ -133,18 +133,20 @@ int main()
     cout << player2.name << " will play as 'O'.\n";
 
     // Game Loop
-    while (moves < 9) {
+    while (moves < 9) 
+    {
         printGameBoard();
-        cout << "It's " << ((symbol == 'X') ? player1.name : player2.name) << "'s turn (" << symbol << ").\n";
-        cout << "Enter the position (1-9): ";
+        cout << ((symbol == 'X') ? player1.name : player2.name) << "'s turn (" << symbol << ").\n";
+        cout << "{Please choose a number (1-9): ";
 
         int choice;
         cin >> choice;
 
         int row, col;
-        if (!inputConversion(choice, row, col) || !isMoveValid(row, col)) {
-            cout << "Invalid move. Try again.\n";
-            continue; // Retry the turn
+        if (!inputConversion(choice, row, col) || !isMoveValid(row, col)) 
+        {
+            cout << "\nInvalid move. Try again.\n";
+            continue; 
         }
 
         // Make the move
