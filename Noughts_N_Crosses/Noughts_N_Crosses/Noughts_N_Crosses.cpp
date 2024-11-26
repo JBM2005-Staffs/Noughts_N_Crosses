@@ -1,35 +1,96 @@
 #include <iostream>
 #include <string>
-#include <vector>
-#include <algorithm>
 using namespace std;
 
-struct Player
+struct Player 
 {
-public:
     string name;
     bool isX = false;
     bool isO = false;
 };
 
-string input;
-char board[3][3] =  { {'_', '_', '_'}, { '_', '_', '_' }, { '_', '_', '_' } };    //Credit to GeeksForGeeks for this inital part
+char board[3][3] = { {'1', '2', '3'},
+                     {'4', '5', '6'},
+                     {'7', '8', '9'} };
+ 
+char symbol = 'X'; // Current turn: 'X' or 'O'
+int moves = 0;     // Count the number of moves made
+bool draw = false;
 
-
-void printBoard() {
-    cout << "    1   2   3\n";
-    for (int i = 0; i < 3; i++) {
-        char rowLabel = 'A' + i; // Convert row index to letter (A, B, C)
-        cout << rowLabel << "   ";
-        for (int j = 0; j < 3; j++) {
-            cout << board[i][j];
-            if (j < 2) cout << " | "; 
-        }
-        cout << endl;
-        if (i < 2) cout << "   ---+---+---\n"; 
-    }
+void printGameBoard() {
+    cout << "    |     |     \n";
+    cout << "  " << board[0][0] << "  |  " << board[0][1] << "  |  " << board[0][2] << " \n";
+    cout << "_____|_____|_____\n";
+    cout << "    |     |     \n";
+    cout << "  " << board[1][0] << "  |  " << board[1][1] << "  |  " << board[1][2] << " \n";       //Geeks for geeks had a different way to this, this concept I picked up from https://www.simplilearn.com/tutorials/cpp-tutorial/game-in-cpp
+    cout << "_____|_____|_____\n";                                                                  // Lots of the methods I've found in my time researching how to make this,
+    cout << "    |     |     \n";                                                                   // are very similar, this grid being quite popular which is why I'm also using it
+    cout << "  " << board[2][0] << "  |  " << board[2][1] << "  |  " << board[2][2] << " \n";
+    cout << "    |     |     \n\n";
 }
-int main()
+
+// Convert user input (1-9) into board coordinates
+bool inputConversion(int choice, int& row, int& col) 
+{
+    if (choice < 1 || choice > 9) {
+        return false; // Invalid input
+    }
+    row = (choice - 1) / 3; // Calculate row index
+    col = (choice - 1) % 3; // Calculate column index
+    return true;
+}
+
+// Check if the selected cell is empty
+bool isMoveValid(int row, int col) 
+{
+    return board[row][col] != 'X' && board[row][col] != 'O';
+}
+
+// Update the board with the current player's symbol
+void updateBoard(int row, int col) 
+{
+    board[row][col] = symbol;
+}
+
+
+void nextTurn() 
+{
+    symbol = (symbol == 'X') ? 'O' : 'X';       // Alternate between X and O (If X last turn, then O, and vice versa
+}
+
+bool checkWin() 
+{
+
+    for (int i = 0; i < 3; i++) 
+    {
+        if (board[i][0] == board[i][1] && board[i][1] == board[i][2]) 
+        {
+            return true;
+        }
+    }
+    
+    //Vertical Checks
+    for (int i = 0; i < 3; i++) 
+    {
+        if (board[0][i] == board[1][i] && board[1][i] == board[2][i]) 
+        {
+            return true;
+        }
+    }
+    
+    //Horizontals too
+    if (board[0][0] == board[1][1] && board[1][1] == board[2][2]) 
+    {
+        return true;
+    }
+    if (board[0][2] == board[1][1] && board[1][1] == board[2][0]) 
+    {
+        return true;
+    }
+    return false;
+}
+
+int main() 
 {
     Player player1;
     Player player2;
@@ -49,7 +110,7 @@ int main()
         << " C     \\/    |         |         " << endl
         << "       /\\    |         |         " << endl
         << "      /  \\   |         |         \n\n" << endl;
-  cout  << " _   _                   _     _          ___     \n"
+    cout << " _   _                   _     _          ___     \n"
         << "| \\ | | ___  _   _  __ _| |__ | |_ ___   ( _ )         \n"
         << "|  \\| |/ _ \\| | | |/ _` | '_ \\| __/ __|  / _ \\/     \n"
         << "| |\\  | (_) | |_| | (_| | | | | |_\\__ \\ | (_>  <     \n"
@@ -65,22 +126,45 @@ int main()
     cout << "> ";
     getline(cin, player1.name);
 
-    cout << player1.name << "\n\n";
+    player1.isX = true;
+    player2.isO = true;
 
-    cout << "Player 2, enter your name\n";
-    cout << "> ";
-    getline(cin, player2.name);
+    cout << player1.name << " will play as 'X'.\n";
+    cout << player2.name << " will play as 'O'.\n";
 
-    cout << player2.name << "\n\n";
+    // Game Loop
+    while (moves < 9) {
+        printGameBoard();
+        cout << "It's " << ((symbol == 'X') ? player1.name : player2.name) << "'s turn (" << symbol << ").\n";
+        cout << "Enter the position (1-9): ";
 
-    cout << player1.name << " Is X\n";
-    cout << player2.name << " is O\n\n ";
-    
-    printBoard();
+        int choice;
+        cin >> choice;
 
-    cout << player1.name << "'s turn!\n" << "Please select a grid position (A1-C3) to start\n" << "> ";
-    cin >> input;
-    
-      //Storing the data in the grid pos is easy because we can just put a boolean on if somethings in there, then we can assign that another bool of X or O depending whose turn it is
-      //The difficult part is making a dynamic grid, we'd possibly need 2 grids, one saved in memory and another blank one to overlay on top
+        int row, col;
+        if (!inputConversion(choice, row, col) || !isMoveValid(row, col)) {
+            cout << "Invalid move. Try again.\n";
+            continue; // Retry the turn
+        }
+
+        // Make the move
+        updateBoard(row, col);
+        moves++;
+
+        // Check for a winner
+        if (checkWin()) 
+        {
+            printGameBoard();
+            cout << ((symbol == 'X') ? player1.name : player2.name) << " WON!\n";
+            cout << "Better luck next time " << ((symbol == 'X') ? player2.name : player1.name) << "!\n";   // Reverse them to get the inverse output. 
+            return 0; // End the game
+        }
+
+        // Switch turns
+        nextTurn();
+    }
+
+    printGameBoard();
+    cout << "Game over! It's a draw.\n";
+    return 0;
 }
